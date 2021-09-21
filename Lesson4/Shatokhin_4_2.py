@@ -31,10 +31,10 @@ def currency_rates(val_name='USD'):
     elem_end_pos = content.find(val_name.upper())
     if elem_end_pos > -1:
         str_content = content[elem_end_pos:content.find('</Value>', elem_end_pos)]
-        kurs_str = str_content[str_content.rfind('<Value>'):].replace('<Value>', '').replace(',', '.')
-        kurs_digit = float(kurs_str)
+        curs_str = str_content[str_content.rfind('<Value>'):].replace('<Value>', '').replace(',', '.')
+        curs_digit = float(curs_str)
 
-        result = kurs_digit
+        result = curs_digit
     else:
         result = f'Валюта {val_name} не найдена'
 

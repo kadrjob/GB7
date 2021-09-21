@@ -3,6 +3,7 @@ from datetime import datetime
 import requests
 from requests import utils
 
+
 def get_url_data(url='http://www.cbr.ru/scripts/XML_daily.asp'):
     """
     Получим ответ API в виде строки
@@ -17,7 +18,7 @@ def get_url_data(url='http://www.cbr.ru/scripts/XML_daily.asp'):
     return data
 
 
-def get_kurs_date(content):
+def get_curs_date(content):
     """
     Получим дату курса валюты
 
@@ -27,13 +28,14 @@ def get_kurs_date(content):
     date_object = None
 
     # нашли строку Date=, вырезали ее до имени атрибута name, убрали Date=, пробелы и ковычки
-    kurs_str = content[content.find('Date='):content.find('name')].replace('Date=', "").replace(' ', '').replace('"','')
+    curs_str = content[content.find('Date='):content.find('name')].replace('Date=', "").replace(' ', '').replace('"',
+                                                                                                                 '')
 
     # разделили дату на составляющие
-    kurs_values = kurs_str.split('.')
+    curs_values = curs_str.split('.')
 
     # конверитировали в объект datetime
-    date_object = datetime(day=int(kurs_values[0]), month=int(kurs_values[1]), year=int(kurs_values[2]))
+    date_object = datetime(day=int(curs_values[0]), month=int(curs_values[1]), year=int(curs_values[2]))
     return date_object
 
 
@@ -45,7 +47,7 @@ def currency_rates(val_name='USD'):
     :return: Список [курс,дата]
     """
     content = get_url_data()
-    date_kurs = get_kurs_date(content)
+    date_curs = get_curs_date(content)
 
     # получили начало имени валюты
     elem_end_pos = content.find(val_name.upper())
@@ -56,12 +58,12 @@ def currency_rates(val_name='USD'):
 
         # из вырезанного куска вырезали еще один с имени Value и до конца строки,
         # убрали Value и заменили запятые на точки
-        kurs_str = str_content[str_content.rfind('<Value>'):].replace('<Value>', '').replace(',', '.')
+        curs_str = str_content[str_content.rfind('<Value>'):].replace('<Value>', '').replace(',', '.')
 
         # конвертировали валюту в число
-        kurs_digit = float(kurs_str)
+        curs_digit = float(curs_str)
 
-        result = kurs_digit, date_kurs
+        result = curs_digit, date_curs
     else:
         result = None
 

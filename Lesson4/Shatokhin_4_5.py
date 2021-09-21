@@ -1,5 +1,5 @@
-import sys
 from utils import currency_rates as cr
+
 
 def main(argv):
     if len(argv) > 1:
@@ -10,5 +10,6 @@ def main(argv):
 
 if __name__ == "__main__":
     import sys
+
     print(main(sys.argv))
     exit(0)
