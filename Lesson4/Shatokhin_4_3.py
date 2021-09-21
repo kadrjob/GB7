@@ -15,6 +15,9 @@ def get_url_data(url='http://www.cbr.ru/scripts/XML_daily.asp'):
     :return: Строка ответ API
     """
     response = requests.api.get(url)
+    # или как вариант без декодирования
+    data = response.text
+
     encodings = utils.get_encoding_from_headers(response.headers)
     data = response.content.decode(encoding=encodings)
 
