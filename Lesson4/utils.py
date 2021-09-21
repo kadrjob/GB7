@@ -58,10 +58,10 @@ def currency_rates(val_name='USD'):
         # убрали Value и заменили запятые на точки
         kurs_str = str_content[str_content.rfind('<Value>'):].replace('<Value>', '').replace(',', '.')
 
-        # конвертировали ваоюту в число
+        # конвертировали валюту в число
         kurs_digit = float(kurs_str)
 
-        result = [kurs_digit, date_kurs]
+        result = kurs_digit, date_kurs
     else:
         result = None
 
