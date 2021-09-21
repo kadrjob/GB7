@@ -2,9 +2,9 @@
 
 from random import choice
 
-nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
-adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
-adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
+# nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
+# adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
+# adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
 
 
 def get_jokes(jcount=1, uniq_only=False):
@@ -30,7 +30,7 @@ def get_jokes(jcount=1, uniq_only=False):
 
         result.append(f'{_nouns} {_adverbs} {_adjectives}')
 
-        # если используем уникальные значения, то использованные элементы удалем из списков
+        # если используем уникальные значения, то использованные элементы удаляем из списков
         if uniq_only:
             nouns.pop(nouns.index(_nouns))
             adverbs.pop(adverbs.index(_adverbs))
