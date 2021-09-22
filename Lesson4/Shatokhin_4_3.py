@@ -53,7 +53,6 @@ def currency_rates(val_name='USD'):
     :return: Список [курс,дата]
     """
     content = get_url_data()
-    date_curs = get_curs_date(content)
 
     # получили начало имени валюты
     elem_end_pos = content.find(val_name.upper())
@@ -68,6 +67,9 @@ def currency_rates(val_name='USD'):
 
         # конвертировали валюту в число
         curs_digit = float(curs_str)
+
+        # получили дату курса валюты
+        date_curs = get_curs_date(content)
 
         result = curs_digit, date_curs
     else:
