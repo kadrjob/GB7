@@ -36,7 +36,8 @@ def currency_rates(val_name='USD'):
 
         result = curs_digit
     else:
-        result = f'Валюта {val_name} не найдена'
+        # result = f'Валюта {val_name} не найдена'
+        result = None
 
     return result
 
