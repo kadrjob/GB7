@@ -34,7 +34,7 @@ def get_curs_date(content):
     date_object = None
 
     # нашли строку Date=, вырезали ее до имени атрибута name, убрали Date=, пробелы и ковычки
-    curs_str = content[content.find('Date='):content.find('name')].replace('Date=', "").replace(' ', '').replace('"',
+    curs_str = content[content.find('Date='):content.find('name')].replace('Date=', '').replace(' ', '').replace('"',
                                                                                                                  '')
 
     # разделили дату на составляющие
